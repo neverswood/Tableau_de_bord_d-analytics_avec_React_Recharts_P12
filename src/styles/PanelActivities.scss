@@ -1,0 +1,24 @@
+.panel {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 117px;
+  height: 933px;
+}
+
+.panel img {
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.panel p {
+  color: white;
+  font-size: 12px;
+  margin-top: 164px;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
