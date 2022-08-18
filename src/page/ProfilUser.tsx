@@ -1,16 +1,13 @@
 import '../styles/ProfilUser.scss';
-import { Header } from '../components/Header';
-import { PanelActivities } from '../components/PanelActivities';
 import { Dashboard } from '../components/Dashboard';
+import { PanelActivities } from '../components/PanelActivities';
+//import { getUser } from '../services/User';
 
 export function ProfilUser() {
   return (
-    <div className="App">
-      <Header />
-      <div className="profil">
-        <PanelActivities />
-        <Dashboard />
-      </div>
+    <div className="profil">
+      <PanelActivities />
+      <Dashboard />
     </div>
   );
 }
