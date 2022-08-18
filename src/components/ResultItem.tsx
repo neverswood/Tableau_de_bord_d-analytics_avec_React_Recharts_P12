@@ -2,7 +2,7 @@ import '../styles/ResultItem.scss';
 
 type ResultItemProps = {
   icon: string;
-  quantity: number;
+  quantity: number | undefined;
   unity: string;
   quantityName: string;
 };
