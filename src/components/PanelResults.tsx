@@ -3,31 +3,37 @@ import caloriesIcon from '../assets/calories-icon.jpg';
 import carbsIcon from '../assets/carbs-icon.jpg';
 import fatIcon from '../assets/fat-icon.jpg';
 import proteinIcon from '../assets/protein-icon.jpg';
+import { UserKeyData } from '../services/User';
 
-export function PanelResults() {
+export function PanelResults({
+  keyData,
+}: {
+  keyData: UserKeyData | undefined;
+}) {
+  console.log('c', keyData);
   return (
     <div className="resultItemList">
       <ResultItem
         icon={caloriesIcon}
-        quantity={1.93}
-        unity="Cal"
+        quantity={keyData?.calorieCount}
+        unity="KCal"
         quantityName="Calories"
       />
       <ResultItem
         icon={proteinIcon}
-        quantity={155}
+        quantity={keyData?.proteinCount}
         unity="g"
         quantityName="Proteines"
       />
       <ResultItem
         icon={carbsIcon}
-        quantity={290}
+        quantity={keyData?.carbohydrateCount}
         unity="g"
         quantityName="Glucides"
       />
       <ResultItem
         icon={fatIcon}
-        quantity={50}
+        quantity={keyData?.lipidCount}
         unity="g"
         quantityName="Lipides"
       />
