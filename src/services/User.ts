@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 export type UserInfos = {
   firstName: string;
   lastName: string;
@@ -39,6 +41,26 @@ export type UserSessionDuration = {
   sessions: [SessionDuration];
 };
 
+type PerformanceKind = {
+  1: string;
+  2: string;
+  3: string;
+  4: string;
+  5: string;
+  6: string;
+};
+
+type PerformanceData = {
+  value: number;
+  kind: number;
+};
+
+export type UserPerformance = {
+  userId: number;
+  kind: PerformanceKind;
+  data: [PerformanceData];
+};
+
 export const getUser = async (): Promise<{ data: User }> => {
   return fetch('http://localhost:3000/user/12')
     .then((response) => {
@@ -59,6 +81,16 @@ export const getUserAverageSession = async (): Promise<{
   data: UserSessionDuration;
 }> => {
   return fetch('http://localhost:3000/user/12/average-sessions')
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => console.log(error));
+};
+
+export const getUserPerformance = async (): Promise<{
+  data: UserPerformance;
+}> => {
+  return fetch('http://localhost:3000/user/12/performance')
     .then((response) => {
       return response.json();
     })
