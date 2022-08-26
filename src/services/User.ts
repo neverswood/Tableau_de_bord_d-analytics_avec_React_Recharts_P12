@@ -18,7 +18,7 @@ export type User = {
   keyData: UserKeyData;
 };
 
-export type UserSession = {
+export type UserSessionActivity = {
   day: string;
   kilogram: number;
   calories: number;
@@ -26,7 +26,17 @@ export type UserSession = {
 
 export type UserActivity = {
   userId: number;
-  sessions: [UserSession];
+  sessions: [UserSessionActivity];
+};
+
+type SessionDuration = {
+  day: number;
+  sessionLength: number;
+};
+
+export type UserSessionDuration = {
+  userId: number;
+  sessions: [SessionDuration];
 };
 
 export const getUser = async (): Promise<{ data: User }> => {
@@ -39,6 +49,16 @@ export const getUser = async (): Promise<{ data: User }> => {
 
 export const getUserActivity = async (): Promise<{ data: UserActivity }> => {
   return fetch('http://localhost:3000/user/12/activity')
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => console.log(error));
+};
+
+export const getUserAverageSession = async (): Promise<{
+  data: UserSessionDuration;
+}> => {
+  return fetch('http://localhost:3000/user/12/average-sessions')
     .then((response) => {
       return response.json();
     })
