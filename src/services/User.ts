@@ -18,7 +18,7 @@ export type User = {
   keyData: UserKeyData;
 };
 
-type UserSession = {
+export type UserSession = {
   day: string;
   kilogram: number;
   calories: number;
@@ -26,7 +26,7 @@ type UserSession = {
 
 export type UserActivity = {
   userId: number;
-  sessions: UserSession;
+  sessions: [UserSession];
 };
 
 export const getUser = async (): Promise<{ data: User }> => {
@@ -37,7 +37,7 @@ export const getUser = async (): Promise<{ data: User }> => {
     .catch((error) => console.log(error));
 };
 
-export const getUserActivity = async (): Promise<UserActivity> => {
+export const getUserActivity = async (): Promise<{ data: UserActivity }> => {
   return fetch('http://localhost:3000/user/12/activity')
     .then((response) => {
       return response.json();
