@@ -62,37 +62,35 @@ export type UserPerformance = {
 };
 
 export const getUser = async (): Promise<{ data: User }> => {
-  return fetch('http://localhost:3000/user/12')
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => console.log(error));
+  const response = await fetch('http://localhost:3000/user/12');
+  const data = await response.json();
+  console.log('data', data);
+  return data;
 };
 
 export const getUserActivity = async (): Promise<{ data: UserActivity }> => {
-  return fetch('http://localhost:3000/user/12/activity')
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => console.log(error));
+  const response = await fetch('http://localhost:3000/user/12/activity');
+  const data = await response.json();
+  console.log('data', data);
+  return data;
 };
 
 export const getUserAverageSession = async (): Promise<{
   data: UserSessionDuration;
 }> => {
-  return fetch('http://localhost:3000/user/12/average-sessions')
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => console.log(error));
+  const response = await fetch(
+    'http://localhost:3000/user/12/average-sessions'
+  );
+  const data = await response.json();
+  console.log('data', data);
+  return data;
 };
 
 export const getUserPerformance = async (): Promise<{
   data: UserPerformance;
 }> => {
-  return fetch('http://localhost:3000/user/12/performance')
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => console.log(error));
+  const response = await fetch('http://localhost:3000/user/12/performance');
+  const data = await response.json();
+  console.log('data', data);
+  return data;
 };
