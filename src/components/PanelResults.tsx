@@ -4,6 +4,7 @@ import carbsIcon from '../assets/carbs-icon.jpg';
 import fatIcon from '../assets/fat-icon.jpg';
 import proteinIcon from '../assets/protein-icon.jpg';
 import { UserKeyData } from '../services/User';
+import '../styles/PanelResults.scss';
 
 export function PanelResults({
   keyData,
