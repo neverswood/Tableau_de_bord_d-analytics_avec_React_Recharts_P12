@@ -1,13 +1,21 @@
 .resultItem {
   display: flex;
   align-items: center;
-  margin-bottom: 103px;
+  margin-bottom: 39px;
+  background-color: #fbfbfb;
+  height: 78px;
 }
 
 .resultItem img {
   width: 60px;
   height: 60px;
   margin-right: 24px;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .result p {
@@ -17,4 +25,10 @@
 
 .result span {
   font-size: 14px;
+}
+
+@media screen and (min-width: 1439px) {
+  .resultItem {
+    height: 124px;
+  }
 }
