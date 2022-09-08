@@ -1,5 +1,3 @@
-import { type } from 'os';
-
 export type UserInfos = {
   firstName: string;
   lastName: string;
