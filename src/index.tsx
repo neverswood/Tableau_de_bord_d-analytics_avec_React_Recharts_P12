@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.scss';
+import './index.scss';
 import { ProfilUser } from './page/ProfilUser';
 import { Header } from './components/Header';
 
