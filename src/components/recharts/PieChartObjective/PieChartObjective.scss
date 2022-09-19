@@ -1,0 +1,48 @@
+.graphic-objective {
+  width: 188px;
+  height: 193px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+
+.custom-legend-pie {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: 131px;
+  height: 131px;
+  margin-left: 13.5%;
+}
+
+.score-number {
+  font-size: 26px;
+  color: black;
+}
+
+.custom-legend-pie p {
+  color: #74798c;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  line-height: 26px;
+  font-weight: bolder;
+}
+
+@media screen and (min-width: 1440px) {
+  .graphic-objective {
+    width: 258px;
+    height: 263px;
+  }
+
+  .custom-legend-pie {
+    width: 131px;
+    height: 131px;
+    margin-left: 23.5%;
+  }
+}
