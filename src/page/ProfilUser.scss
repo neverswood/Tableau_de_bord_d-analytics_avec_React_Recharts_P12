@@ -1,0 +1,10 @@
+.profil {
+  display: flex;
+  height: 689px;
+}
+
+@media screen and (min-width: 1440px) {
+  .profil {
+    height: 933px;
+  }
+}
