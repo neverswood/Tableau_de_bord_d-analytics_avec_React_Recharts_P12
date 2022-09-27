@@ -1,32 +1,33 @@
-export type UserInfos = {
-  firstName: string;
-  lastName: string;
-  age: number;
-};
-
-export type UserKeyData = {
-  calorieCount: number;
-  proteinCount: number;
-  carbohydrateCount: number;
-  lipidCount: number;
-};
+import UserActivityModel from './models/UserActivity';
+import UserDataModel from './models/UserDataModel';
+import UserPerformanceModel from './models/UserPerformanceModel';
+import UserSessionDurationModel from './models/UserSessionDuration';
 
 export type User = {
   id: number;
-  userInfos: UserInfos;
+  userInfos: {
+    firstName: string;
+    lastName: string;
+    age: number;
+  };
   todayScore: number;
-  keyData: UserKeyData;
-};
-
-export type UserSessionActivity = {
-  day: string;
-  kilogram: number;
-  calories: number;
+  keyData: {
+    calorieCount: number;
+    proteinCount: number;
+    carbohydrateCount: number;
+    lipidCount: number;
+  };
 };
 
 export type UserActivity = {
   userId: number;
-  sessions: [UserSessionActivity];
+  sessions: [
+    {
+      day: string;
+      kilogram: number;
+      calories: number;
+    }
+  ];
 };
 
 type SessionDuration = {
@@ -59,36 +60,33 @@ export type UserPerformance = {
   data: [PerformanceData];
 };
 
-export const getUser = async (): Promise<{ data: User }> => {
-  const response = await fetch('http://localhost:3000/user/12');
-  const data = await response.json();
-  console.log('data', data);
-  return data;
+export const getUser = async (): Promise<UserDataModel> => {
+  const response = await fetch(`http://localhost:3000/user/12`);
+  const dataJson = await response.json();
+  return new UserDataModel(dataJson.data);
 };
-
-export const getUserActivity = async (): Promise<{ data: UserActivity }> => {
+/*
+export const getUserActivity = async (): Promise<UserActivityModel> => {
   const response = await fetch('http://localhost:3000/user/12/activity');
-  const data = await response.json();
-  console.log('data', data);
-  return data;
-};
-
-export const getUserAverageSession = async (): Promise<{
-  data: UserSessionDuration;
-}> => {
-  const response = await fetch(
-    'http://localhost:3000/user/12/average-sessions'
+  const dataJson = await response.json();
+  return dataJson.data.sessions.map(
+    (top: { day: string; kilogram: number; calories: number }) =>
+      new UserActivityModel(top)
   );
-  const data = await response.json();
-  console.log('data', data);
-  return data;
 };
 
-export const getUserPerformance = async (): Promise<{
-  data: UserPerformance;
-}> => {
+export const getUserAverageSession =
+  async (): Promise<UserSessionDurationModel> => {
+    const response = await fetch(
+      'http://localhost:3000/user/12/average-sessions'
+    );
+    const dataJson = await response.json();
+    return new UserSessionDurationModel(dataJson.data);
+  };
+
+export const getUserPerformance = async (): Promise<UserPerformanceModel> => {
   const response = await fetch('http://localhost:3000/user/12/performance');
-  const data = await response.json();
-  console.log('data', data);
-  return data;
+  const dataJson = await response.json();
+  return new UserPerformanceModel(dataJson.data);
 };
+*/
