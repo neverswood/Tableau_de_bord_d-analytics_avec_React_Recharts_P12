@@ -10,6 +10,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Header />
-    <ProfilUser />
+    <ProfilUser userId={12} />
   </React.StrictMode>
 );
