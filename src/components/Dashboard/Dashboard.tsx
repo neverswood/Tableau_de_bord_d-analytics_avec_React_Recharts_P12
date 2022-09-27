@@ -8,19 +8,20 @@ import { RadarChartPerformances } from '../recharts/RadarChartPerformances/Radar
 import { LineChartSessionDuration } from '../recharts/LineChartSessionDuration/LineChartSessionDuration';
 import { DashboardHeader } from './DashboardHeader/DashboardHeader';
 import { PanelResults } from '../PanelResults/PanelResults';
+import UserDataModel from '../../services/models/UserDataModel';
 
 export function Dashboard(): JSX.Element | null {
-  const [userData, setUserData] = useState<User | null>(null);
+  const [userData, setUserData] = useState<UserDataModel | null>(null);
 
   useEffect(() => {
-    getUser().then(({ data }) => setUserData(data));
+    getUser().then((response) => setUserData(response));
   }, []);
   if (!userData) {
     return null;
   }
   return (
     <div className="dashboard">
-      <DashboardHeader userFirstName={userData.userInfos.firstName} />
+      <DashboardHeader userFirstName={userData.firstName} />
       <div className="results">
         <div className="charts">
           <BarChartDailyActivity />
@@ -30,7 +31,7 @@ export function Dashboard(): JSX.Element | null {
             <PieChartObjective />
           </div>
         </div>
-        <PanelResults keyData={userData.keyData} />
+        <PanelResults keyData={userData} />
       </div>
     </div>
   );
