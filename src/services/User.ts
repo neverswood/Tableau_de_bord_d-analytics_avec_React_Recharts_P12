@@ -60,8 +60,8 @@ export type UserPerformance = {
   data: [PerformanceData];
 };
 
-export const getUser = async (): Promise<UserDataModel> => {
-  const response = await fetch(`http://localhost:3000/user/12`);
+export const getUser = async (id: number): Promise<UserDataModel> => {
+  const response = await fetch(`http://localhost:3000/user/${id}`);
   const dataJson = await response.json();
   return new UserDataModel(dataJson.data);
 };

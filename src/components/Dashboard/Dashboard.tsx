@@ -10,12 +10,12 @@ import { DashboardHeader } from './DashboardHeader/DashboardHeader';
 import { PanelResults } from '../PanelResults/PanelResults';
 import UserDataModel from '../../services/models/UserDataModel';
 
-export function Dashboard(): JSX.Element | null {
+export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
   const [userData, setUserData] = useState<UserDataModel | null>(null);
 
   useEffect(() => {
-    getUser().then((response) => setUserData(response));
-  }, []);
+    getUser(userId).then((response) => setUserData(response));
+  }, [userId]);
   if (!userData) {
     return null;
   }
