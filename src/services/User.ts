@@ -83,7 +83,10 @@ export const getUserAverageSession =
       'http://localhost:3000/user/12/average-sessions'
     );
     const dataJson = await response.json();
-    return new UserSessionDurationModel(dataJson.data);
+    return dataJson.data.sessions.map(
+      (session: { day: number; sessionLength: number }) =>
+        new UserSessionDurationModel(session)
+    );
   };
 /*
 export const getUserPerformance = async (): Promise<UserPerformanceModel> => {
