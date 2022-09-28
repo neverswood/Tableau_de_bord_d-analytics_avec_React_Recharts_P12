@@ -90,8 +90,10 @@ export const getUserAverageSession = async (
   );
 };
 
-export const getUserPerformance = async (): Promise<UserPerformanceModel> => {
-  const response = await fetch('http://localhost:3000/user/12/performance');
+export const getUserPerformance = async (
+  id: number
+): Promise<UserPerformanceModel> => {
+  const response = await fetch(`http://localhost:3000/user/${12}/performance`);
   const dataJson = await response.json();
   return dataJson.data.data.map(
     (data: { value: number; kind: number }) => new UserPerformanceModel(data)

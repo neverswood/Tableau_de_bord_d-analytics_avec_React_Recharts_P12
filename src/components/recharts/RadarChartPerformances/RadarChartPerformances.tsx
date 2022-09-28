@@ -12,14 +12,14 @@ import { getUserPerformance } from '../../../services/User';
 import './RadarChartPerformances.scss';
 import UserPerformanceModel from '../../../services/models/UserPerformanceModel';
 
-export function RadarChartPerformances() {
+export function RadarChartPerformances({ userId }: { userId: number }) {
   const [userPerformance, setUserPerformance] = useState<
     UserPerformanceModel | null | any
   >(null);
 
   useEffect(() => {
-    getUserPerformance().then((response) => setUserPerformance(response));
-  }, []);
+    getUserPerformance(userId).then((response) => setUserPerformance(response));
+  }, [userId]);
 
   if (!userPerformance) {
     return null;
