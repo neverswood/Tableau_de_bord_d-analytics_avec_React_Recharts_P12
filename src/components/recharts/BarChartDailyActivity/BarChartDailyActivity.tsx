@@ -11,20 +11,17 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { getUserActivity, UserActivity } from '../../../services/User';
+import { getUserActivity } from '../../../services/User';
+import UserActivityModel from '../../../services/models/UserActivityModel';
 
 export function BarChartDailyActivity() {
-  const [userData, setUserData] = useState<UserActivity | null>(null);
+  const [userData, setUserData] = useState<UserActivityModel | any | null>(
+    null
+  );
 
   useEffect(() => {
-    getUserActivity().then(({ data }) => setUserData(data));
+    getUserActivity().then((response) => setUserData(response));
   }, []);
-  console.log('oulaoup', userData?.sessions);
-
-  const FormatDate = (value: any, index: number): string => {
-    const dot = new Date(value).getDate();
-    return dot + '';
-  };
 
   const CustomTooltip = ({
     active,
@@ -68,7 +65,7 @@ export function BarChartDailyActivity() {
     <div className="graphic-daily-activity">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          data={userData?.sessions}
+          data={userData}
           margin={{ top: 100, bottom: -50, left: 20 }}
           barGap="10%"
         >
@@ -92,7 +89,6 @@ export function BarChartDailyActivity() {
           <CartesianGrid strokeDasharray="2" vertical={false} />
           <XAxis
             dataKey="day"
-            tickFormatter={FormatDate}
             fontSize={14}
             tickMargin={15}
             tickLine={false}
@@ -138,13 +134,3 @@ export function BarChartDailyActivity() {
     </div>
   );
 }
-
-BarChartDailyActivity.protoTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      day: propTypes.string,
-      kilogram: propTypes.number,
-      calories: propTypes.number,
-    })
-  ),
-};
