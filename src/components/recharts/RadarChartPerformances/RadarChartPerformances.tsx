@@ -60,3 +60,12 @@ export function RadarChartPerformances() {
     </div>
   );
 }
+
+RadarChartPerformances.propTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      value: propTypes.number,
+      kind: propTypes.number,
+    })
+  ),
+};
