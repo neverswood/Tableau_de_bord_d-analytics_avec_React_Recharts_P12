@@ -2,13 +2,12 @@ import caloriesIcon from '../../assets/calories-icon.jpg';
 import carbsIcon from '../../assets/carbs-icon.jpg';
 import fatIcon from '../../assets/fat-icon.jpg';
 import proteinIcon from '../../assets/protein-icon.jpg';
-import { UserKeyData } from './../../services/User';
+import UserDataModel from '../../services/models/UserDataModel';
+import propTypes from 'prop-types';
 import './PanelResults.scss';
 import { ResultItem } from './ResultItem';
 
-export function PanelResults({ keyData }: { keyData: UserKeyData }) {
-  console.log('c', keyData);
-
+export function PanelResults({ keyData }: { keyData: UserDataModel }) {
   return (
     <div className="resultItemList">
       <ResultItem
@@ -38,3 +37,14 @@ export function PanelResults({ keyData }: { keyData: UserKeyData }) {
     </div>
   );
 }
+
+PanelResults.protoTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      icon: propTypes.string,
+      quantity: propTypes.number,
+      unity: propTypes.string,
+      quantityName: propTypes.string,
+    })
+  ),
+};
