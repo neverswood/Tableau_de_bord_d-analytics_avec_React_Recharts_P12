@@ -8,30 +8,22 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
-import { getUserPerformance, UserPerformance } from '../../../services/User';
+import { getUserPerformance } from '../../../services/User';
 import './RadarChartPerformances.scss';
+import UserPerformanceModel from '../../../services/models/UserPerformanceModel';
 
 export function RadarChartPerformances() {
   const [userPerformance, setUserPerformance] = useState<
-    UserPerformance | null | any
+    UserPerformanceModel | null | any
   >(null);
 
   useEffect(() => {
-    getUserPerformance().then(({ data }) => setUserPerformance(data));
+    getUserPerformance().then((response) => setUserPerformance(response));
   }, []);
-  console.log('use', userPerformance?.data);
 
-  const Labels = [
-    'Cardio',
-    'Energie',
-    'Endurance',
-    'Force',
-    'Vitesse',
-    'Intensité',
-  ];
-  const getLabel = (kind: any) => {
-    return Labels[kind - 1];
-  };
+  if (!userPerformance) {
+    return null;
+  }
 
   return (
     <div className="radar-chart-performance">
@@ -42,7 +34,7 @@ export function RadarChartPerformances() {
           outerRadius="60%"
           width={133}
           height={117}
-          data={userPerformance?.data.reduce(
+          data={userPerformance.reduce(
             (acc: any, val: any) => [val, ...acc],
             []
           )}
@@ -50,7 +42,6 @@ export function RadarChartPerformances() {
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="kind"
-            tickFormatter={getLabel}
             orient=""
             tick={{ fontSize: '12', fill: 'white' }}
             dx={0}
@@ -69,12 +60,3 @@ export function RadarChartPerformances() {
     </div>
   );
 }
-
-RadarChartPerformances.propTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      value: propTypes.number,
-      kind: propTypes.number,
-    })
-  ),
-};
