@@ -1,4 +1,5 @@
 import './ResultItem.scss';
+import propTypes from 'prop-types';
 
 type ResultItemProps = {
   icon: string;
@@ -26,3 +27,14 @@ export function ResultItem({
     </div>
   );
 }
+
+ResultItem.protoTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      icon: propTypes.string,
+      quantity: propTypes.number,
+      unity: propTypes.string,
+      quantityName: propTypes.string,
+    })
+  ),
+};
