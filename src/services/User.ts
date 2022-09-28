@@ -77,17 +77,18 @@ export const getUserActivity = async (
   );
 };
 
-export const getUserAverageSession =
-  async (): Promise<UserSessionDurationModel> => {
-    const response = await fetch(
-      'http://localhost:3000/user/12/average-sessions'
-    );
-    const dataJson = await response.json();
-    return dataJson.data.sessions.map(
-      (session: { day: number; sessionLength: number }) =>
-        new UserSessionDurationModel(session)
-    );
-  };
+export const getUserAverageSession = async (
+  id: number
+): Promise<UserSessionDurationModel> => {
+  const response = await fetch(
+    `http://localhost:3000/user/${id}/average-sessions`
+  );
+  const dataJson = await response.json();
+  return dataJson.data.sessions.map(
+    (session: { day: number; sessionLength: number }) =>
+      new UserSessionDurationModel(session)
+  );
+};
 /*
 export const getUserPerformance = async (): Promise<UserPerformanceModel> => {
   const response = await fetch('http://localhost:3000/user/12/performance');

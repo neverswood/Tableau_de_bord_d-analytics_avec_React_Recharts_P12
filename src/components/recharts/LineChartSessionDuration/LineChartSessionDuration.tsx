@@ -14,14 +14,14 @@ import { getUserAverageSession } from '../../../services/User';
 import './LineChartSessionDuration.scss';
 import UserSessionDurationModel from '../../../services/models/UserSessionDurationModel';
 
-export function LineChartSessionDuration() {
+export function LineChartSessionDuration({ userId }: { userId: number }) {
   const [userSession, setUserSession] = useState<
     UserSessionDurationModel | any | null
   >(null);
 
   useEffect(() => {
-    getUserAverageSession().then((response) => setUserSession(response));
-  }, []);
+    getUserAverageSession(userId).then((response) => setUserSession(response));
+  }, [userId]);
 
   const CustomTooltip = ({
     active,
