@@ -1,4 +1,4 @@
-import UserActivityModel from './models/UserActivity';
+import UserActivityModel from './models/UserActivityModel';
 import UserDataModel from './models/UserDataModel';
 import UserPerformanceModel from './models/UserPerformanceModel';
 import UserSessionDurationModel from './models/UserSessionDuration';
@@ -65,16 +65,16 @@ export const getUser = async (id: number): Promise<UserDataModel> => {
   const dataJson = await response.json();
   return new UserDataModel(dataJson.data);
 };
-/*
+
 export const getUserActivity = async (): Promise<UserActivityModel> => {
   const response = await fetch('http://localhost:3000/user/12/activity');
   const dataJson = await response.json();
   return dataJson.data.sessions.map(
-    (top: { day: string; kilogram: number; calories: number }) =>
-      new UserActivityModel(top)
+    (session: { day: string; kilogram: number; calories: number }) =>
+      new UserActivityModel(session)
   );
 };
-
+/*
 export const getUserAverageSession =
   async (): Promise<UserSessionDurationModel> => {
     const response = await fetch(
