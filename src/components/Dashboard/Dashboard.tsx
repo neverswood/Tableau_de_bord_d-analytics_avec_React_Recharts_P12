@@ -28,7 +28,7 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
           <div className="charts-under">
             <LineChartSessionDuration userId={userId} />
             <RadarChartPerformances userId={userId} />
-            <PieChartObjective />
+            <PieChartObjective userId={userId} />
           </div>
         </div>
         <PanelResults keyData={userData} />

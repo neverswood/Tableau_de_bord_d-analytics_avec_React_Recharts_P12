@@ -3,20 +3,21 @@ import propTypes from 'prop-types';
 import './PieChartObjective.scss';
 import { Legend, ResponsiveContainer, PieChart, Pie } from 'recharts';
 import { getUser, User } from '../../../services/User';
+import UserDataModel from '../../../services/models/UserDataModel';
 
-export function PieChartObjective() {
-  const [userData, setUserData] = useState<User | null | any>(null);
+export function PieChartObjective({ userId }: { userId: number }) {
+  const [userData, setUserData] = useState<UserDataModel | null | any>(null);
 
   useEffect(() => {
-    getUser().then(({ data }) => setUserData(data));
-  }, []);
-  console.log('userdata', userData);
+    getUser(userId).then((response) => setUserData(response));
+  }, [userId]);
+  console.log('dc', userData);
 
   const scoreData = [
-    { name: 'completed', value: userData?.todayScore, fill: 'red' },
+    { name: 'completed', value: userData?.score, fill: 'red' },
     {
       name: 'not-completed',
-      value: 1 - userData?.todayScore,
+      value: 1 - userData?.score,
       fill: 'transparent',
     },
   ];
