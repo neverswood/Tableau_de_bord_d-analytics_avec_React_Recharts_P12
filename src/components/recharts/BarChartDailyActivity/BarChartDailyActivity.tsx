@@ -14,14 +14,14 @@ import {
 import { getUserActivity } from '../../../services/User';
 import UserActivityModel from '../../../services/models/UserActivityModel';
 
-export function BarChartDailyActivity() {
+export function BarChartDailyActivity({ userId }: { userId: number }) {
   const [userData, setUserData] = useState<UserActivityModel | any | null>(
     null
   );
 
   useEffect(() => {
-    getUserActivity().then((response) => setUserData(response));
-  }, []);
+    getUserActivity(userId).then((response) => setUserData(response));
+  }, [userId]);
 
   const CustomTooltip = ({
     active,

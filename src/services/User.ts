@@ -66,8 +66,10 @@ export const getUser = async (id: number): Promise<UserDataModel> => {
   return new UserDataModel(dataJson.data);
 };
 
-export const getUserActivity = async (): Promise<UserActivityModel> => {
-  const response = await fetch('http://localhost:3000/user/12/activity');
+export const getUserActivity = async (
+  id: number
+): Promise<UserActivityModel> => {
+  const response = await fetch(`http://localhost:3000/user/${12}/activity`);
   const dataJson = await response.json();
   return dataJson.data.sessions.map(
     (session: { day: string; kilogram: number; calories: number }) =>

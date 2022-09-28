@@ -24,7 +24,7 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
       <DashboardHeader userFirstName={userData.firstName} />
       <div className="results">
         <div className="charts">
-          <BarChartDailyActivity />
+          <BarChartDailyActivity userId={userId} />
           <div className="charts-under">
             <LineChartSessionDuration />
             <RadarChartPerformances />
