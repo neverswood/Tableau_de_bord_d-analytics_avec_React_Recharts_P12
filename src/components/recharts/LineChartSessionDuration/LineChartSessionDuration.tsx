@@ -10,24 +10,18 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import {
-  getUserAverageSession,
-  UserSessionDuration,
-} from '../../../services/User';
+import { getUserAverageSession } from '../../../services/User';
 import './LineChartSessionDuration.scss';
+import UserSessionDurationModel from '../../../services/models/UserSessionDurationModel';
 
 export function LineChartSessionDuration() {
-  const [userSession, setUserSession] = useState<UserSessionDuration | null>(
-    null
-  );
+  const [userSession, setUserSession] = useState<
+    UserSessionDurationModel | any | null
+  >(null);
 
   useEffect(() => {
-    getUserAverageSession().then(({ data }) => setUserSession(data));
+    getUserAverageSession().then((response) => setUserSession(response));
   }, []);
-  console.log('12345', userSession?.sessions);
-
-  const getDay = (day: any) => Days[day - 1];
-  const Days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
   const CustomTooltip = ({
     active,
@@ -37,8 +31,6 @@ export function LineChartSessionDuration() {
     payload: any;
   }) => {
     if (active && payload && payload.length) {
-      console.log('pay', payload);
-
       return (
         <div className="custom-tooltip-line">
           <p className="label-line">{`${payload[0].value}   min`}</p>
@@ -49,10 +41,7 @@ export function LineChartSessionDuration() {
     return null;
   };
 
-  //const [coordinate, setCoordinate] = useState(<rect/>);
-
   const CustomHover = (props: any) => {
-    //console.log('r', points);
     const points = props.points;
 
     return (
@@ -66,19 +55,20 @@ export function LineChartSessionDuration() {
     );
   };
 
+  if (!userSession) {
+    return null;
+  }
+
   return (
     <div className="graphic-session-duration">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={userSession?.sessions}
+          data={userSession}
           margin={{
             top: 5,
             right: 30,
             left: 20,
             bottom: 5,
-          }}
-          onMouseMove={(event) => {
-            console.log('er', event, event.activeCoordinate);
           }}
         >
           <rect
@@ -104,8 +94,7 @@ export function LineChartSessionDuration() {
           </text>
 
           <XAxis
-            dataKey="day"
-            tickFormatter={getDay}
+            dataKey="newDay"
             fontSize={12}
             tick={{ opacity: 0.7 }}
             tickLine={false}
@@ -142,12 +131,3 @@ export function LineChartSessionDuration() {
     </div>
   );
 }
-
-LineChartSessionDuration.propTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      day: propTypes.number,
-      sessionLenght: propTypes.number,
-    })
-  ),
-};
