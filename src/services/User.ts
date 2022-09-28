@@ -1,7 +1,7 @@
 import UserActivityModel from './models/UserActivityModel';
 import UserDataModel from './models/UserDataModel';
 import UserPerformanceModel from './models/UserPerformanceModel';
-import UserSessionDurationModel from './models/UserSessionDuration';
+import UserSessionDurationModel from './models/UserSessionDurationModel';
 
 export type User = {
   id: number;
@@ -76,7 +76,7 @@ export const getUserActivity = async (
       new UserActivityModel(session)
   );
 };
-/*
+
 export const getUserAverageSession =
   async (): Promise<UserSessionDurationModel> => {
     const response = await fetch(
@@ -85,7 +85,7 @@ export const getUserAverageSession =
     const dataJson = await response.json();
     return new UserSessionDurationModel(dataJson.data);
   };
-
+/*
 export const getUserPerformance = async (): Promise<UserPerformanceModel> => {
   const response = await fetch('http://localhost:3000/user/12/performance');
   const dataJson = await response.json();
