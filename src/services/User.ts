@@ -62,8 +62,10 @@ export type UserPerformance = {
 
 export const getUser = async (id: number): Promise<UserDataModel> => {
   const response = await fetch(`http://localhost:3000/user/${id}`);
+  // const response = await fetch('mock/mock_user_data.json');
   const dataJson = await response.json();
   return new UserDataModel(dataJson.data);
+  // return dataJson;
 };
 
 export const getUserActivity = async (
