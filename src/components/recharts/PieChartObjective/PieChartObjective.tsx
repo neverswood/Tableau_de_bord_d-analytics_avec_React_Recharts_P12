@@ -11,13 +11,16 @@ export function PieChartObjective({ userId }: { userId: number }) {
   useEffect(() => {
     getUser(userId).then((response) => setUserData(response));
   }, [userId]);
-  console.log('dc', userData);
+
+  if (!userData) {
+    return null;
+  }
 
   const scoreData = [
-    { name: 'completed', value: userData?.score, fill: 'red' },
+    { name: 'completed', value: userData.todayScore, fill: 'red' },
     {
       name: 'not-completed',
-      value: 1 - userData?.score,
+      value: 1 - userData.todayScore,
       fill: 'transparent',
     },
   ];
