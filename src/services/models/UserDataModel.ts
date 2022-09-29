@@ -23,34 +23,20 @@ export default class UserDataModel {
   firstName;
   lastName;
   age;
-  score;
-  constructor(dataUser: User) {
-    this.id = dataUser.id;
-    this.firstName = dataUser.userInfos.firstName;
-    this.lastName = dataUser.userInfos.lastName;
-    this.age = dataUser.userInfos.age;
-    this.score = dataUser.todayScore;
-    this.calorieCount = dataUser.keyData.calorieCount;
-    this.proteinCount = dataUser.keyData.proteinCount;
-    this.carbohydrateCount = dataUser.keyData.carbohydrateCount;
-    this.lipidCount = dataUser.keyData.lipidCount;
+  todayScore;
+  userInfos;
+  keyData;
+  constructor(data: User) {
+    this.id = data.id;
+    this.userInfos = data.userInfos;
+    this.firstName = this.userInfos.firstName;
+    this.lastName = this.userInfos.lastName;
+    this.age = this.userInfos.age;
+    this.todayScore = data.todayScore;
+    this.keyData = data.keyData;
+    this.calorieCount = this.keyData.calorieCount;
+    this.proteinCount = this.keyData.proteinCount;
+    this.carbohydrateCount = this.keyData.carbohydrateCount;
+    this.lipidCount = this.keyData.lipidCount;
   }
 }
-
-/*
-export default class UserActivity {
-    userId: number;
-    sessions: any;
-    day: string;
-    kilogram: number;
-    calories: number;
-    constructor(
-        userId: number, sessions: Array<Object>, day: string, kilogram: number, calories: number)
-            {
-                this.userId = userId;
-                this.sessions = sessions;
-                this.day = day;
-                this.kilogram = kilogram;
-                this.calories = calories;
-            }
-    }*/
