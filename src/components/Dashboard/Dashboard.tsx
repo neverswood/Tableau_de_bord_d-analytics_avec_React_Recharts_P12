@@ -16,12 +16,15 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
   useEffect(() => {
     getUser(userId).then((response) => setUserData(response));
   }, [userId]);
+  console.log('xbn', userData?.keyData);
+
   if (!userData) {
     return null;
   }
+
   return (
     <div className="dashboard">
-      <DashboardHeader userFirstName={userData.firstName} />
+      <DashboardHeader userFirstName={userData.userInfos.firstName} />
       <div className="results">
         <div className="charts">
           <BarChartDailyActivity userId={userId} />
@@ -31,7 +34,7 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
             <PieChartObjective userId={userId} />
           </div>
         </div>
-        <PanelResults keyData={userData} />
+        <PanelResults userData={userData} />
       </div>
     </div>
   );
