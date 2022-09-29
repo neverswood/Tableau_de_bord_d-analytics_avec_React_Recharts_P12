@@ -16,7 +16,6 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
   useEffect(() => {
     getUser(userId).then((response) => setUserData(response));
   }, [userId]);
-  console.log('xbn', userData?.keyData);
 
   if (!userData) {
     return null;
