@@ -7,30 +7,30 @@ import propTypes from 'prop-types';
 import './PanelResults.scss';
 import { ResultItem } from './ResultItem';
 
-export function PanelResults({ keyData }: { keyData: UserDataModel }) {
+export function PanelResults({ userData }: { userData: UserDataModel }) {
   return (
     <div className="resultItemList">
       <ResultItem
         icon={caloriesIcon}
-        quantity={keyData.calorieCount}
+        quantity={userData.keyData.calorieCount}
         unity="KCal"
         quantityName="Calories"
       />
       <ResultItem
         icon={proteinIcon}
-        quantity={keyData.proteinCount}
+        quantity={userData.keyData.proteinCount}
         unity="g"
         quantityName="Proteines"
       />
       <ResultItem
         icon={carbsIcon}
-        quantity={keyData.carbohydrateCount}
+        quantity={userData.keyData.carbohydrateCount}
         unity="g"
         quantityName="Glucides"
       />
       <ResultItem
         icon={fatIcon}
-        quantity={keyData.lipidCount}
+        quantity={userData.keyData.lipidCount}
         unity="g"
         quantityName="Lipides"
       />
