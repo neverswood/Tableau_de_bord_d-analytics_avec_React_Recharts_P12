@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUser, User } from '../../services/User';
+import { getUser } from '../../services/User';
 
 import './Dashboard.scss';
 import { BarChartDailyActivity } from '../recharts/BarChartDailyActivity/BarChartDailyActivity';
