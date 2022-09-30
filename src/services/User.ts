@@ -90,7 +90,12 @@ export const getUserAverageSession = async (
   const response = await fetch(
     `http://localhost:3000/user/${id}/average-sessions`
   );
+  // const response = await fetch('mock/mock_user_average_sessions.json');
   const dataJson = await response.json();
+  /*  return dataJson.sessions.map(
+    (sessions: { day: number; sessionLength: number }) =>
+      new UserSessionDurationModel(sessions)
+  );*/
   return dataJson.data.sessions.map(
     (session: { day: number; sessionLength: number }) =>
       new UserSessionDurationModel(session)
