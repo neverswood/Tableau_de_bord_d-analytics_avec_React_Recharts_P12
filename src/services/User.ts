@@ -106,7 +106,11 @@ export const getUserPerformance = async (
   id: number
 ): Promise<UserPerformanceModel> => {
   const response = await fetch(`http://localhost:3000/user/${12}/performance`);
+  //const response = await fetch('mock/mock_user_performance.json');
   const dataJson = await response.json();
+  /*return dataJson.data.map(
+    (data: { value: number; kind: number }) => new UserPerformanceModel(data)
+  );*/
   return dataJson.data.data.map(
     (data: { value: number; kind: number }) => new UserPerformanceModel(data)
   );
