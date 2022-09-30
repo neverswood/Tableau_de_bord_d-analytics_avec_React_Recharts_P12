@@ -94,7 +94,7 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
           </text>
 
           <XAxis
-            dataKey="newDay"
+            dataKey="day"
             fontSize={12}
             tick={{ opacity: 0.7 }}
             tickLine={false}
