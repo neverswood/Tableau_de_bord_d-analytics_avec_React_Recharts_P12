@@ -72,7 +72,12 @@ export const getUserActivity = async (
   id: number
 ): Promise<UserActivityModel> => {
   const response = await fetch(`http://localhost:3000/user/${12}/activity`);
+  //const response = await fetch('mock/mock_user_activity.json');
   const dataJson = await response.json();
+  /*  return dataJson.sessions.map(
+    (sessions: { day: string; kilogram: number; calories: number }) =>
+      new UserActivityModel(sessions)
+  );*/
   return dataJson.data.sessions.map(
     (session: { day: string; kilogram: number; calories: number }) =>
       new UserActivityModel(session)
