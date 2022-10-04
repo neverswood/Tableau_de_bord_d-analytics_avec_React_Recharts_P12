@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './PieChartObjective.scss';
 import { Legend, ResponsiveContainer, PieChart, Pie } from 'recharts';
-import { getUser, User } from '../../../services/User';
-import UserDataModel from '../../../services/models/UserDataModel';
 
-export function PieChartObjective({ userId }: { userId: number }) {
-  const [userData, setUserData] = useState<UserDataModel | null | any>(null);
-
-  useEffect(() => {
-    getUser(userId).then((response) => setUserData(response));
-  }, [userId]);
-
-  if (!userData) {
-    return null;
-  }
-
+export function PieChartObjective({ todayScore }: { todayScore: number }) {
   const scoreData = [
-    { name: 'completed', value: userData.todayScore, fill: 'red' },
+    { name: 'completed', value: todayScore, fill: 'red' },
     {
       name: 'not-completed',
-      value: 1 - userData.todayScore,
+      value: 1 - todayScore,
       fill: 'transparent',
     },
   ];
@@ -72,7 +59,3 @@ export function PieChartObjective({ userId }: { userId: number }) {
     </div>
   );
 }
-
-PieChartObjective.propTypes = {
-  data: propTypes.number,
-};
