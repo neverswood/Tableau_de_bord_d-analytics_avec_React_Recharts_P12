@@ -62,3 +62,7 @@ export function RadarChartPerformances({ userId }: { userId: number }) {
     </div>
   );
 }
+
+RadarChartPerformances.propTypes = {
+  userId: PropTypes.number,
+};
