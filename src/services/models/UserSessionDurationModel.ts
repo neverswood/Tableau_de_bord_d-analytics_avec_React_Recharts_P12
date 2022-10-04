@@ -4,7 +4,7 @@ type UserSessionDuration = {
 };
 
 export default class UserSessionDurationModel {
-  sessionLength;
+  sessionLength: number;
   day: string;
   constructor(data: UserSessionDuration) {
     this.day = ['L', 'M', 'M', 'J', 'V', 'S', 'D'][data.day - 1];
