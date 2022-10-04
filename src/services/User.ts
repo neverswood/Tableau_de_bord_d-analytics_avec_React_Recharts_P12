@@ -62,16 +62,16 @@ export type UserPerformance = {
 
 export const getUser = async (id: number): Promise<UserDataModel> => {
   const response = await fetch(`http://localhost:3000/user/${id}`);
-  // const response = await fetch('mock/mock_user_data.json');
+  //const response = await fetch('mock/mock_user_data.json');
   const dataJson = await response.json();
   return new UserDataModel(dataJson.data);
-  // return dataJson;
+  //return new UserDataModel(dataJson);
 };
 
-export const getUserActivity = async (
+export const getUserActivities = async (
   id: number
-): Promise<UserActivityModel> => {
-  const response = await fetch(`http://localhost:3000/user/${12}/activity`);
+): Promise<UserActivityModel[]> => {
+  const response = await fetch(`http://localhost:3000/user/${id}/activity`);
   //const response = await fetch('mock/mock_user_activity.json');
   const dataJson = await response.json();
   /*  return dataJson.sessions.map(
@@ -84,9 +84,9 @@ export const getUserActivity = async (
   );
 };
 
-export const getUserAverageSession = async (
+export const getUserAverageSessions = async (
   id: number
-): Promise<UserSessionDurationModel> => {
+): Promise<UserSessionDurationModel[]> => {
   const response = await fetch(
     `http://localhost:3000/user/${id}/average-sessions`
   );
@@ -102,10 +102,10 @@ export const getUserAverageSession = async (
   );
 };
 
-export const getUserPerformance = async (
+export const getUserPerformances = async (
   id: number
-): Promise<UserPerformanceModel> => {
-  const response = await fetch(`http://localhost:3000/user/${12}/performance`);
+): Promise<UserPerformanceModel[]> => {
+  const response = await fetch(`http://localhost:3000/user/${id}/performance`);
   //const response = await fetch('mock/mock_user_performance.json');
   const dataJson = await response.json();
   /*return dataJson.data.map(
