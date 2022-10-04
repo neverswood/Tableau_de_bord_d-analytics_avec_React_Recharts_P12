@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -8,20 +8,22 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
-import { getUserPerformance } from '../../../services/User';
+import { getUserPerformances } from '../../../services/User';
 import './RadarChartPerformances.scss';
 import UserPerformanceModel from '../../../services/models/UserPerformanceModel';
 
 export function RadarChartPerformances({ userId }: { userId: number }) {
-  const [userPerformance, setUserPerformance] = useState<
-    UserPerformanceModel | null | any
-  >(null);
+  const [userPerformances, setUserPerformances] = useState<
+    UserPerformanceModel[]
+  >([]);
 
   useEffect(() => {
-    getUserPerformance(userId).then((response) => setUserPerformance(response));
+    getUserPerformances(userId).then((response) =>
+      setUserPerformances(response)
+    );
   }, [userId]);
 
-  if (!userPerformance) {
+  if (userPerformances.length === 0) {
     return null;
   }
 
@@ -34,7 +36,7 @@ export function RadarChartPerformances({ userId }: { userId: number }) {
           outerRadius="60%"
           width={133}
           height={117}
-          data={userPerformance.reduce(
+          data={userPerformances.reduce(
             (acc: any, val: any) => [val, ...acc],
             []
           )}
@@ -60,12 +62,3 @@ export function RadarChartPerformances({ userId }: { userId: number }) {
     </div>
   );
 }
-
-RadarChartPerformances.propTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      value: propTypes.number,
-      kind: propTypes.number,
-    })
-  ),
-};
