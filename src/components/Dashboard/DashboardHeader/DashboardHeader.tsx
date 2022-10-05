@@ -1,4 +1,5 @@
 import './DashboardHeader.scss';
+import PropTypes from 'prop-types';
 
 export function DashboardHeader({ userFirstName }: { userFirstName: string }) {
   return (
@@ -12,3 +13,7 @@ export function DashboardHeader({ userFirstName }: { userFirstName: string }) {
     </div>
   );
 }
+
+DashboardHeader.propTypes = {
+  userFirstName: PropTypes.string,
+};
