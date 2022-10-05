@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './BarChartDailyActivity.scss';
 import {
   BarChart,
@@ -11,16 +11,14 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { getUserActivity } from '../../../services/User';
+import { getUserActivities } from '../../../services/User';
 import UserActivityModel from '../../../services/models/UserActivityModel';
 
-export function BarChartDailyActivity({ userId }: { userId: number }) {
-  const [userData, setUserData] = useState<UserActivityModel | any | null>(
-    null
-  );
+export function BarChartDailyActivities({ userId }: { userId: number }) {
+  const [userActivities, setUserActivities] = useState<UserActivityModel[]>([]);
 
   useEffect(() => {
-    getUserActivity(userId).then((response) => setUserData(response));
+    getUserActivities(userId).then((response) => setUserActivities(response));
   }, [userId]);
 
   const CustomTooltip = ({
@@ -32,9 +30,9 @@ export function BarChartDailyActivity({ userId }: { userId: number }) {
   }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip">
-          <p className="label">{`${payload[1].value}kg`}</p>
-          <p className="intro">{`${payload[0].value}Kcal`}</p>
+        <div className="custom__tooltip">
+          <p className="custom__tooltip__label">{`${payload[1].value}kg`}</p>
+          <p className="custom__tooltip__intro">{`${payload[0].value}Kcal`}</p>
         </div>
       );
     }
@@ -44,12 +42,12 @@ export function BarChartDailyActivity({ userId }: { userId: number }) {
 
   const renderLegend = () => {
     return (
-      <div className="custom-legend">
-        <p className="lab">
+      <div className="custom__legend">
+        <p className="custom__legend__weight">
           <i className="fa fa-solid fa-circle circle-poids"></i>
           {`Poids (kg)`}
         </p>
-        <p className="intr">
+        <p className="custom__legend__calories">
           <i className="fa-solid fa-circle circle-calories"></i>
           {`Calories brulées(Kcal)`}
         </p>
@@ -57,7 +55,7 @@ export function BarChartDailyActivity({ userId }: { userId: number }) {
     );
   };
 
-  if (!userData) {
+  if (userActivities.length === 0) {
     return null;
   }
 
@@ -65,7 +63,7 @@ export function BarChartDailyActivity({ userId }: { userId: number }) {
     <div className="graphic-daily-activity">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          data={userData}
+          data={userActivities}
           margin={{ top: 100, bottom: -50, left: 20 }}
           barGap="10%"
         >
@@ -134,13 +132,3 @@ export function BarChartDailyActivity({ userId }: { userId: number }) {
     </div>
   );
 }
-
-BarChartDailyActivity.protoTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      day: propTypes.string,
-      kilogram: propTypes.number,
-      calories: propTypes.number,
-    })
-  ),
-};
