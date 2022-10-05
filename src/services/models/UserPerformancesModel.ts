@@ -4,7 +4,7 @@ type UserPerformance = {
 };
 
 /** Class representing a model for performances data */
-export default class UserPerformanceModel {
+export default class UserPerformancesModel {
   /**
    * Create user performances data model.
    * @param {UserPerformance} data - The data value

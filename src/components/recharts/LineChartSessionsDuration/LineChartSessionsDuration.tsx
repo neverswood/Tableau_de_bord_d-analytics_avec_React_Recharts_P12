@@ -18,7 +18,7 @@ import UserSessionDurationModel from '../../../services/models/UserSessionDurati
  * @param {number} userId - The userId value
  * @return {LineChartSessionsDurations}
  */
-export function LineChartSessionDuration({ userId }: { userId: number }) {
+export function LineChartSessionsDuration({ userId }: { userId: number }) {
   const [userSessions, setUserSessions] = useState<UserSessionDurationModel[]>(
     []
   );
@@ -138,7 +138,7 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
   );
 }
 
-LineChartSessionDuration.propTypes = {
+LineChartSessionsDuration.propTypes = {
   userSessions: PropTypes.shape({
     day: PropTypes.number,
     sessionLenght: PropTypes.number,

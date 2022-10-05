@@ -5,7 +5,7 @@ type UserActivity = {
 };
 
 /** Class representing a model for user activities model */
-export default class UserActivityModel {
+export default class UserActivitiesModel {
   /**
    * Create user activiites data model.
    * @param {UserActivity} data - The data value
