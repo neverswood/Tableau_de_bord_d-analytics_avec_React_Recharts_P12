@@ -132,3 +132,11 @@ export function BarChartDailyActivities({ userId }: { userId: number }) {
     </div>
   );
 }
+
+BarChartDailyActivities.protoTypes = {
+  userData: PropTypes.shape({
+    day: PropTypes.string,
+    kilogram: PropTypes.number,
+    calories: PropTypes.number,
+  }),
+};
