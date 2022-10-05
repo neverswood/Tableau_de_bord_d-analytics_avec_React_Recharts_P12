@@ -8,9 +8,6 @@ type ResultItemProps = {
   quantityName: string;
 };
 
-/**
- * Function represents the item of each user result
- */
 export function ResultItem({
   icon,
   quantity,
