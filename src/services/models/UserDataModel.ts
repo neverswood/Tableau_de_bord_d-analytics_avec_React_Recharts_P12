@@ -16,9 +16,9 @@ type User = {
 
 export default class UserDataModel {
   calorieCount: string;
-  proteinCount: string;
-  carbohydrateCount: string;
-  lipidCount: string;
+  proteinCount: number;
+  carbohydrateCount: number;
+  lipidCount: number;
   id: number;
   firstName: string;
   lastName: string;
@@ -33,8 +33,8 @@ export default class UserDataModel {
     this.calorieCount = new Intl.NumberFormat('en-In')
       .format(data.keyData.calorieCount)
       .toString();
-    this.proteinCount = data.keyData.proteinCount.toString();
-    this.carbohydrateCount = data.keyData.carbohydrateCount.toString();
-    this.lipidCount = data.keyData.lipidCount.toString();
+    this.proteinCount = data.keyData.proteinCount;
+    this.carbohydrateCount = data.keyData.carbohydrateCount;
+    this.lipidCount = data.keyData.lipidCount;
   }
 }
