@@ -38,3 +38,7 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
     </div>
   );
 }
+
+Dashboard.propTypes = {
+  userId: PropTypes.number,
+};
