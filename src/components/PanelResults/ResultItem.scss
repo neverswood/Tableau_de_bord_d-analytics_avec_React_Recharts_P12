@@ -1,4 +1,4 @@
-.resultItem {
+.result__item {
   display: flex;
   align-items: center;
   margin-bottom: 39px;
@@ -6,31 +6,31 @@
   height: 78px;
 }
 
-.resultItem img {
+.result__item img {
   width: 60px;
   height: 60px;
   margin: 0 24px 0 32px;
 }
 
-.result {
+.result__item__issue {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.result p {
+.result__item__issue p {
   font-size: 20px;
   font-weight: 700;
   margin: 0;
 }
 
-.result span {
+.result__item__issue span {
   font-size: 14px;
   color: #74798c;
 }
 
 @media screen and (min-width: 1439px) {
-  .resultItem {
+  .result__item {
     height: 124px;
   }
 }
