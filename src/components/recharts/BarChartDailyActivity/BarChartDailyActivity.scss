@@ -14,7 +14,7 @@
   width: 200px;
 }
 
-.custom-tooltip {
+.custom__tooltip {
   background-color: red;
   width: 39px;
   height: 63px;
@@ -26,16 +26,12 @@
   font-size: 7px;
 }
 
-.label,
-.intro {
+.custom__tooltip__label,
+.custom__tooltip__intro {
   color: white;
 }
-/*
-.text-color-class {
-  color: #74798c;
-}*/
 
-.custom-legend {
+.custom__legend {
   display: flex;
   align-items: center;
   color: #74798c;
