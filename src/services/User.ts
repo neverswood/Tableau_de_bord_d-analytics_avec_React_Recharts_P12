@@ -1,6 +1,6 @@
-import UserActivityModel from './models/UserActivityModel';
+import UserActivityModel from './models/UserActivitiesModel';
 import UserDataModel from './models/UserDataModel';
-import UserPerformanceModel from './models/UserPerformanceModel';
+import UserPerformanceModel from './models/UserPerformancesModel';
 import UserSessionDurationModel from './models/UserSessionDurationModel';
 
 export type User = {

@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getUserActivities } from '../../../services/User';
-import UserActivityModel from '../../../services/models/UserActivityModel';
+import UserActivityModel from '../../../services/models/UserActivitiesModel';
 
 /**
  * Function representing weight and calorie graph for each day.

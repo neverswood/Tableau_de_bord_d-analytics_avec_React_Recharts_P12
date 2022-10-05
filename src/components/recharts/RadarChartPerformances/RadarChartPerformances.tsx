@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import { getUserPerformances } from '../../../services/User';
 import './RadarChartPerformances.scss';
-import UserPerformanceModel from '../../../services/models/UserPerformanceModel';
+import UserPerformanceModel from '../../../services/models/UserPerformancesModel';
 
 /**
  * Function representing the user performances with the radarChart
