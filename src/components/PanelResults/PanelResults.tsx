@@ -37,3 +37,12 @@ export function PanelResults({ userData }: { userData: UserDataModel }) {
     </div>
   );
 }
+
+PanelResults.protoTypes = {
+  userData: PropTypes.shape({
+    calorieCount: PropTypes.string,
+    proteinCount: PropTypes.number,
+    carbohydrateCount: PropTypes.number,
+    lipidCount: PropTypes.number,
+  }),
+};
