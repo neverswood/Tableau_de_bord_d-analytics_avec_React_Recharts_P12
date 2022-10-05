@@ -1,5 +1,5 @@
 import { object } from 'prop-types';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import {
   LineChart,
@@ -9,18 +9,19 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-
-import { getUserAverageSession } from '../../../services/User';
+import { getUserAverageSessions } from '../../../services/User';
 import './LineChartSessionDuration.scss';
 import UserSessionDurationModel from '../../../services/models/UserSessionDurationModel';
 
 export function LineChartSessionDuration({ userId }: { userId: number }) {
-  const [userSession, setUserSession] = useState<
-    UserSessionDurationModel | any | null
-  >(null);
+  const [userSessions, setUserSessions] = useState<UserSessionDurationModel[]>(
+    []
+  );
 
   useEffect(() => {
-    getUserAverageSession(userId).then((response) => setUserSession(response));
+    getUserAverageSessions(userId).then((response) =>
+      setUserSessions(response)
+    );
   }, [userId]);
 
   const CustomTooltip = ({
@@ -55,7 +56,7 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
     );
   };
 
-  if (!userSession) {
+  if (userSessions.length === 0) {
     return null;
   }
 
@@ -63,7 +64,7 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
     <div className="graphic-session-duration">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={userSession}
+          data={userSessions}
           margin={{
             top: 5,
             right: 30,
@@ -131,12 +132,3 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
     </div>
   );
 }
-
-LineChartSessionDuration.propTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      day: propTypes.number,
-      sessionLenght: propTypes.number,
-    })
-  ),
-};
