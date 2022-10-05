@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import './BarChartDailyActivity.scss';
+import './BarChartDailyActivities.scss';
 import {
   BarChart,
   Bar,

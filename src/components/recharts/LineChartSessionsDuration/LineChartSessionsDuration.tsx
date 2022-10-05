@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getUserAverageSessions } from '../../../services/User';
-import './LineChartSessionDuration.scss';
+import './LineChartSessionsDuration.scss';
 import UserSessionDurationModel from '../../../services/models/UserSessionDurationModel';
 
 /**
