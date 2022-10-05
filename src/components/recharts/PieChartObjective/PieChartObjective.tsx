@@ -59,3 +59,7 @@ export function PieChartObjective({ todayScore }: { todayScore: number }) {
     </div>
   );
 }
+
+PieChartObjective.propTypes = {
+  todayScore: PropTypes.number,
+};
