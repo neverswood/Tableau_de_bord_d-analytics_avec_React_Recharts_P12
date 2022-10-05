@@ -4,7 +4,12 @@ type UserActivity = {
   calories: number;
 };
 
+/** Class representing a model for user activities model */
 export default class UserActivityModel {
+  /**
+   * Create user activiites data model.
+   * @param {UserActivity} data - The data value
+   */
   day;
   calories;
   kilogram;

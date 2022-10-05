@@ -7,6 +7,11 @@ import PropTypes from 'prop-types';
 import './PanelResults.scss';
 import { ResultItem } from './ResultItem';
 
+/**
+ * Function representing the list of user results (calories, proteins, carbohydrates and fats).
+ * @param {UserDataModel} userData - The userData value
+ * @return {PanelResults}
+ */
 export function PanelResults({ userData }: { userData: UserDataModel }) {
   return (
     <div className="result__item__list">

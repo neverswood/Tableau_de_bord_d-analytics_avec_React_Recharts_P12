@@ -13,6 +13,11 @@ import { getUserAverageSessions } from '../../../services/User';
 import './LineChartSessionDuration.scss';
 import UserSessionDurationModel from '../../../services/models/UserSessionDurationModel';
 
+/**
+ * Function representing the session duration of the sports activity per day of the user.
+ * @param {number} userId - The userId value
+ * @return {LineChartSessionsDurations}
+ */
 export function LineChartSessionDuration({ userId }: { userId: number }) {
   const [userSessions, setUserSessions] = useState<UserSessionDurationModel[]>(
     []

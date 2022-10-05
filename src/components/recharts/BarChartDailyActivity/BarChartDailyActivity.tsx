@@ -14,6 +14,11 @@ import {
 import { getUserActivities } from '../../../services/User';
 import UserActivityModel from '../../../services/models/UserActivityModel';
 
+/**
+ * Function representing weight and calorie graph for each day.
+ * @param {userId} userId - The userId value
+ * @return {BarChartDailyActivities}
+ */
 export function BarChartDailyActivities({ userId }: { userId: number }) {
   const [userActivities, setUserActivities] = useState<UserActivityModel[]>([]);
 

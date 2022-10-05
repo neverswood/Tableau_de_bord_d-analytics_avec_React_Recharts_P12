@@ -12,6 +12,12 @@ import { getUserPerformances } from '../../../services/User';
 import './RadarChartPerformances.scss';
 import UserPerformanceModel from '../../../services/models/UserPerformanceModel';
 
+/**
+ * Function representing the user performances with the radarChart
+ * @param {number} userId - The userId value
+ * @return {RadarChartPerformances}
+ */
+
 export function RadarChartPerformances({ userId }: { userId: number }) {
   const [userPerformances, setUserPerformances] = useState<
     UserPerformanceModel[]

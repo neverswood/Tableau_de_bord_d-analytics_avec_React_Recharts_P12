@@ -60,6 +60,15 @@ export type UserPerformance = {
   data: [PerformanceData];
 };
 
+/**
+ * Functions to fetch the data from the backend API or from the mock data
+ */
+
+/**
+ *
+ * @param id - user id
+ * @returns {promise} Promise representing user data
+ */
 export const getUser = async (id: number): Promise<UserDataModel> => {
   const response = await fetch(`http://localhost:3000/user/${id}`);
   //const response = await fetch('mock/mock_user_data.json');
@@ -68,6 +77,11 @@ export const getUser = async (id: number): Promise<UserDataModel> => {
   //return new UserDataModel(dataJson);
 };
 
+/**
+ *
+ * @param id  - user id
+ * @returns {promise} Promise representing user activities data
+ */
 export const getUserActivities = async (
   id: number
 ): Promise<UserActivityModel[]> => {
@@ -84,6 +98,11 @@ export const getUserActivities = async (
   );
 };
 
+/**
+ *
+ * @param id - user id
+ * @returns {promise} Promise representing user average sessions data
+ */
 export const getUserAverageSessions = async (
   id: number
 ): Promise<UserSessionDurationModel[]> => {
@@ -102,6 +121,11 @@ export const getUserAverageSessions = async (
   );
 };
 
+/**
+ *
+ * @param id - user id
+ * @returns {promise} Promise representing user performances data
+ */
 export const getUserPerformances = async (
   id: number
 ): Promise<UserPerformanceModel[]> => {

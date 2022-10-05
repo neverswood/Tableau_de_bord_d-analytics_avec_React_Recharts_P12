@@ -10,6 +10,11 @@ import { DashboardHeader } from './DashboardHeader/DashboardHeader';
 import { PanelResults } from '../PanelResults/PanelResults';
 import UserDataModel from '../../services/models/UserDataModel';
 
+/**
+ * Function representing the user dashboard with its results.
+ * @param {number} userId - The userId value
+ * @return {Dashboard}
+ */
 export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
   const [userData, setUserData] = useState<UserDataModel | null>(null);
 

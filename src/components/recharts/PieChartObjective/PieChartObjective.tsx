@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import './PieChartObjective.scss';
 import { Legend, ResponsiveContainer, PieChart, Pie } from 'recharts';
 
+/**
+ * Function representing in percentage and by a PieChart the progress of the user's goal.
+ * @param {number} todayScore - The todayScore value
+ * @return {PieChartObjective}
+ */
 export function PieChartObjective({ todayScore }: { todayScore: number }) {
   const scoreData = [
     { name: 'completed', value: todayScore, fill: 'red' },

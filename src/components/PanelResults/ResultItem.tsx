@@ -8,6 +8,11 @@ type ResultItemProps = {
   quantityName: string;
 };
 
+/**
+ * Function representing the item of each user result.
+ * @param {ResultItemProps} - The icon, quantity, unity and quantityName value
+ * @return {(number | string)} List of the icon, quantity, unity and quantityName
+ */
 export function ResultItem({
   icon,
   quantity,

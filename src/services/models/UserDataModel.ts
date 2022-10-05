@@ -14,7 +14,12 @@ type User = {
   };
 };
 
+/** Class representing a model for user data */
 export default class UserDataModel {
+  /**
+   * Create user data model.
+   * @param {User} data - The data value
+   */
   calorieCount: string;
   proteinCount: number;
   carbohydrateCount: number;

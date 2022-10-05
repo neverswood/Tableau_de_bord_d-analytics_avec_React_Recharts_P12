@@ -3,7 +3,12 @@ type UserPerformance = {
   kind: number;
 };
 
+/** Class representing a model for performances data */
 export default class UserPerformanceModel {
+  /**
+   * Create user performances data model.
+   * @param {UserPerformance} data - The data value
+   */
   kind;
   value;
   constructor(data: UserPerformance) {

@@ -3,7 +3,12 @@ type UserSessionDuration = {
   sessionLength: number;
 };
 
+/** Class representing a model for user sessions duration data */
 export default class UserSessionDurationModel {
+  /**
+   * Create user sessions duration data model.
+   * @param {UserSessionDuration} data - The data value
+   */
   sessionLength: number;
   day: string;
   constructor(data: UserSessionDuration) {
