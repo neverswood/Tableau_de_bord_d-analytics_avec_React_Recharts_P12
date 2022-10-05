@@ -1,13 +1,16 @@
 import './ResultItem.scss';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 type ResultItemProps = {
   icon: string;
-  quantity: number;
+  quantity: string | number;
   unity: string;
   quantityName: string;
 };
 
+/**
+ * Function represents the item of each user result
+ */
 export function ResultItem({
   icon,
   quantity,
@@ -15,9 +18,9 @@ export function ResultItem({
   quantityName,
 }: ResultItemProps) {
   return (
-    <div className="resultItem">
-      <img src={icon} alt="icon"></img>
-      <div className="result">
+    <div className="result__item">
+      <img src={icon} alt="result__item__icon"></img>
+      <div className="result__item__issue">
         <p>
           {quantity}
           {unity}
@@ -29,12 +32,8 @@ export function ResultItem({
 }
 
 ResultItem.protoTypes = {
-  data: propTypes.arrayOf(
-    propTypes.shape({
-      icon: propTypes.string,
-      quantity: propTypes.number,
-      unity: propTypes.string,
-      quantityName: propTypes.string,
-    })
-  ),
+  icon: PropTypes.string,
+  quantity: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  unity: PropTypes.string,
+  quantityName: PropTypes.string,
 };
