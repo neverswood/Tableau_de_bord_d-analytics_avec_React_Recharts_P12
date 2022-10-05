@@ -132,3 +132,10 @@ export function LineChartSessionDuration({ userId }: { userId: number }) {
     </div>
   );
 }
+
+LineChartSessionDuration.propTypes = {
+  userSessions: PropTypes.shape({
+    day: PropTypes.number,
+    sessionLenght: PropTypes.number,
+  }),
+};
