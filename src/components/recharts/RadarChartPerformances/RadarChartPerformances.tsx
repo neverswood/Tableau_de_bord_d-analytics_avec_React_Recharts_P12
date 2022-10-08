@@ -24,9 +24,11 @@ export function RadarChartPerformances({ userId }: { userId: number }) {
   >([]);
 
   useEffect(() => {
-    getUserPerformances(userId).then((response) =>
-      setUserPerformances(response)
-    );
+    getUserPerformances(userId)
+      .then((response) => setUserPerformances(response))
+      .catch((error) => {
+        console.error('There is a mistake', error);
+      });
   }, [userId]);
 
   if (userPerformances.length === 0) {

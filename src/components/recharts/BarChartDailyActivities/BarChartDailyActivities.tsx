@@ -23,7 +23,11 @@ export function BarChartDailyActivities({ userId }: { userId: number }) {
   const [userActivities, setUserActivities] = useState<UserActivityModel[]>([]);
 
   useEffect(() => {
-    getUserActivities(userId).then((response) => setUserActivities(response));
+    getUserActivities(userId)
+      .then((response) => setUserActivities(response))
+      .catch((error) => {
+        console.error('There is a mistake', error);
+      });
   }, [userId]);
 
   const CustomTooltip = ({

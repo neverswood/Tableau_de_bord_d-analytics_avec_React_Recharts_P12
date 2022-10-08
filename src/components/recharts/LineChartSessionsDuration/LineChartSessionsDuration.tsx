@@ -24,9 +24,11 @@ export function LineChartSessionsDuration({ userId }: { userId: number }) {
   );
 
   useEffect(() => {
-    getUserAverageSessions(userId).then((response) =>
-      setUserSessions(response)
-    );
+    getUserAverageSessions(userId)
+      .then((response) => setUserSessions(response))
+      .catch((error) => {
+        console.error('There is a mistake', error);
+      });
   }, [userId]);
 
   const CustomTooltip = ({

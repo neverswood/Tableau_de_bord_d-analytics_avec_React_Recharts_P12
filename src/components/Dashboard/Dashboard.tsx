@@ -19,7 +19,11 @@ export function Dashboard({ userId }: { userId: number }): JSX.Element | null {
   const [userData, setUserData] = useState<UserDataModel | null>(null);
 
   useEffect(() => {
-    getUser(userId).then((response) => setUserData(response));
+    getUser(userId)
+      .then((response) => setUserData(response))
+      .catch((error) => {
+        console.error('There is a mistake', error);
+      });
   }, [userId]);
 
   if (!userData) {
