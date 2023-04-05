@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "jsdoc": "~8.10.0"
+    "jsdoc": "^4.0.2"
   }
 }
